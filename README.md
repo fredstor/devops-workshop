@@ -1,4 +1,4 @@
-# 🚀 DevOps Workshop: Fra kode til produksjon på 90 minutter
+# 🚀 DevOps Workshop: Fra kode til produksjon på 60 minutter
 
 Velkommen til en praktisk workshop hvor du og teamet ditt lærer å sette opp en komplett DevOps-pipeline med GitHub Actions og GitHub Pages. Målet er å bygge, validere, og deploye en statisk nettside – helt automatisk!
 
