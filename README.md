@@ -41,11 +41,11 @@ Velkommen til en praktisk workshop hvor du og teamet ditt lærer å sette opp en
 
 ## ✅ Mål for å være “ferdig”
 
-- [ ] Automatisk deploy til GitHub Pages etter merge til `main`
-- [ ] Workflow inkluderer HTML-validering og feilhåndtering
-- [ ] Automatisk varsel hvis noe feiler
-- [ ] Nettsiden viser versjon og er tilgjengelig på GitHub Pages
-- [ ] Teamet forstår hvordan CI/CD fungerer og gir verdi
+- [x] Automatisk deploy til GitHub Pages etter merge til `main`
+- [x] Workflow inkluderer HTML-validering og feilhåndtering
+- [x] Automatisk varsel hvis noe feiler
+- [x] Nettsiden viser versjon og er tilgjengelig på GitHub Pages
+- [x] Teamet forstår hvordan CI/CD fungerer og gir verdi
 
 ---
 
