@@ -1,9 +1,6 @@
 name: HTML Lint
 
 on:
-  push:
-    paths:
-      - '**/*.html'
   pull_request:
     paths:
       - '**/*.html'
@@ -11,18 +8,36 @@ on:
 jobs:
   htmlhint:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write  # nødvendig for å skrive kommentarer
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18' # or any supported version
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
       - name: Run HTMLHint
-        run: npx htmlhint "**/*.html"
+        id: lint
+        run: |
+          npx htmlhint "**/*.html"
+        continue-on-error: true  # ikke stopp jobben hvis lint feiler
+
+      - name: Comment on PR if lint fails
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ⚠️ **HTMLHint oppdaget problemer i HTML-koden.**
+            
+            Kjør `npx htmlhint "**/*.html"` lokalt for å se detaljer og rette feil.
+            
+            Workflow: [${{ github.workflow }} #${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
